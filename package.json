@@ -1,7 +1,7 @@
 {
-  "name": "calamari-bot",
+  "name": "discord-form-bot",
   "version": "1.0.0",
-  "description": "bot for calamari to handle suggestions, reports, and more",
+  "description": "bot to handle suggestions, reports, and more",
   "author": "Koma4k",
   "main": "index.js",
   "scripts": {
