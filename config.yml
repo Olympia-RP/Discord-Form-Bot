@@ -2,7 +2,7 @@ bot:
   token: "bot token here"
   client_id: "bot client id here"
 
-# i setup the bot to configure permissions for multiple guilds if needed
+# Can configure multiple guilds if needed
 guilds:
   - id: "guild 1 id here"
     permissions:
