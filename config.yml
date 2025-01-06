@@ -1,0 +1,24 @@
+bot:
+  token: "bot token here"
+  client_id: "bot client id here"
+
+# i setup the bot to configure permissions for multiple guilds if needed
+guilds:
+  - id: "guild 1 id here"
+    permissions:
+      setup_command: # only these roles can use the /setup command
+        roles: ["role 1 id here", "role 2 id here"]
+      form_approval: # only these roles can approve/deny forms submissions
+        roles: ["role 1 id here", "role 2 id here"]
+      form_submission: # only these roles can submit forms
+        roles: ["role 1 id here", "role 2 id here"]
+#  - id: "guild 2 id here"
+#    permissions:
+#      setup_command: # only these roles can use the /setup command
+#        roles: ["role 1 id here", "role 2 id here"]
+#      form_approval: # only these roles can approve/deny forms submissions
+#        roles: ["role 1 id here", "role 2 id here"]
+#      form_submission: # only these roles can submit forms
+#        roles: ["role 1 id here", "role 2 id here"]
+
+send_dm_to_submitter: false # if true, the bot will try to send a DM to the user who submitted the form when a form is approved/denied

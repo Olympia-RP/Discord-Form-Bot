@@ -1,0 +1,19 @@
+{
+  "name": "calamari-bot",
+  "version": "1.0.0",
+  "description": "bot for calamari to handle suggestions, reports, and more",
+  "author": "Koma4k",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "sqlite3": "^5.1.6",
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+} 
