@@ -301,8 +301,8 @@ module.exports = {
                                     try {
                                         const submitter = await interaction.guild.members.fetch(submission.user_id);
                                         const notificationEmbed = new EmbedBuilder()
-                                            .setTitle(`Form ${action === 'approve' ? 'Approved' : 'Denied'}`)
-                                            .setDescription(`Your form submission has been ${action === 'approve' ? 'Approved' : 'Denied'}.`)
+                                            .setTitle(`Formulaire ${action === 'approve' ? 'Approuvé' : 'Refuser'}`)
+                                            .setDescription(`Votre soumission de formulaire a été ${action === 'approve' ? 'Approuvé' : 'Refuser'}.`)
                                             .setColor(action === 'approve' ? '#00FF00' : '#FF0000')
                                             .addFields(
                                                 { name: 'Reason', value: reason }
@@ -316,7 +316,7 @@ module.exports = {
                                 }
 
                                 await interaction.reply({
-                                    content: `Form submission successfully ${action === 'approve' ? 'approved' : 'denied'}`,
+                                    content: `Soumission du formulaire réussie ${action === 'approve' ? 'Approuvé' : 'Refuser'}`,
                                     ephemeral: true
                                 });
                             }
