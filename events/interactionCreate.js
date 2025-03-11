@@ -64,7 +64,7 @@ module.exports = {
             if (interaction.isButton() && interaction.customId.startsWith('openForm_')) {
                 if (!hasPermission(interaction.member, 'form_submission')) {
                     return interaction.reply({
-                        content: 'You do not have permission to submit forms. Required roles are missing.',
+                        content: 'Vous n\'êtes pas autorisé à soumettre des formulaires. Les rôles requis sont manquants.',
                         ephemeral: true
                     });
                 }
@@ -180,7 +180,7 @@ module.exports = {
             if (interaction.isButton() && (interaction.customId.startsWith('approve_') || interaction.customId.startsWith('deny_'))) {
                 if (!hasPermission(interaction.member, 'form_approval')) {
                     return interaction.reply({
-                        content: 'You do not have permission to approve/deny forms.',
+                        content: 'Vous n\'avez pas la permission d\'approuver/refuser des formulaires.',
                         ephemeral: true
                     });
                 }
@@ -343,7 +343,7 @@ module.exports = {
 
                         if (existingVote) {
                             return interaction.reply({
-                                content: 'You have already voted on this submission.',
+                                content: 'Vous avez déjà voté pour cette soumission.',
                                 ephemeral: true
                             });
                         }
@@ -385,7 +385,7 @@ module.exports = {
                                     });
 
                                     await interaction.reply({
-                                        content: `Your vote has been recorded!`,
+                                        content: `Votre vote a été enregistré !`,
                                         ephemeral: true
                                     });
                                 }
@@ -400,7 +400,7 @@ module.exports = {
             try {
                 if (!interaction.replied && !interaction.deferred) {
                     await interaction.reply({
-                        content: 'There was an error handling your interaction!',
+                        content: 'Une erreur s\'est produite lors du traitement de votre interaction!',
                         ephemeral: true
                     });
                 }
