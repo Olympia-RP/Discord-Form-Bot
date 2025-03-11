@@ -137,7 +137,7 @@ module.exports = {
                             }
 
                             const responseEmbed = new EmbedBuilder()
-                                .setTitle(truncateText(`New Submission: ${formData.embed.title}`, 256))
+                                .setTitle(truncateText(`Nouvelle soumission: ${formData.embed.title}`, 256))
                                 .setDescription(truncateText(`Submitted by <@${interaction.user.id}> (${interaction.user.tag})`, 4096))
                                 .setColor(formData.embed.color)
                                 .setTimestamp();
