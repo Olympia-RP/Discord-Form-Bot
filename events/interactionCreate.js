@@ -43,7 +43,7 @@ module.exports = {
                     console.error('Error handling setup button:', error);
                     if (!interaction.replied && !interaction.deferred) {
                         await interaction.reply({
-                            content: 'There was an error processing your request. Please try again.',
+                            content: 'Une erreur s\'est produite lors du traitement de votre demande. Veuillez réessayer.',
                             ephemeral: true
                         });
                     }
@@ -74,7 +74,7 @@ module.exports = {
                 db.get(`SELECT * FROM form_templates WHERE id = ?`, [formId], async (err, template) => {
                     if (err || !template) {
                         return interaction.reply({ 
-                            content: 'Error loading form template.', 
+                            content: 'Erreur lors du chargement du modèle de formulaire.', 
                             ephemeral: true 
                         });
                     }
@@ -109,7 +109,7 @@ module.exports = {
                 db.get(`SELECT * FROM form_templates WHERE id = ?`, [formId], async (err, template) => {
                     if (err || !template) {
                         return interaction.reply({ 
-                            content: 'Error loading form template.', 
+                            content: 'Erreur lors du chargement du modèle de formulaire.', 
                             ephemeral: true 
                         });
                     }
@@ -129,21 +129,21 @@ module.exports = {
                         [formId, interaction.user.id, JSON.stringify(responses)],
                         async function(err) {
                             if (err) {
-                                console.error('Error saving form submission:', err);
+                                console.error('Erreur lors de l\'enregistrement de la soumission du formulaire:', err);
                                 return interaction.reply({ 
-                                    content: 'Error submitting form.', 
+                                    content: 'Erreur lors de l\'envoi du formulaire.', 
                                     ephemeral: true 
                                 });
                             }
 
                             const responseEmbed = new EmbedBuilder()
                                 .setTitle(truncateText(`Nouvelle soumission: ${formData.embed.title}`, 256))
-                                .setDescription(truncateText(`Submitted by <@${interaction.user.id}> (${interaction.user.tag})`, 4096))
+                                .setDescription(truncateText(`Soumis par <@${interaction.user.id}> (${interaction.user.tag})`, 4096))
                                 .setColor(formData.embed.color)
                                 .setTimestamp();
 
                             Object.entries(responses).forEach(([field, value]) => {
-                                const displayValue = value.trim() || 'No response provided';
+                                const displayValue = value.trim() || 'Aucune réponse fournie';
                                 responseEmbed.addFields({ 
                                     name: truncateText(field, 256), 
                                     value: truncateText(displayValue, 1024),
@@ -154,11 +154,11 @@ module.exports = {
                             const approvalRow = new ActionRowBuilder().addComponents(
                                 new ButtonBuilder()
                                     .setCustomId(`approve_${this.lastID}`)
-                                    .setLabel('Approve')
+                                    .setLabel('Approuvé')
                                     .setStyle(ButtonStyle.Success),
                                 new ButtonBuilder()
                                     .setCustomId(`deny_${this.lastID}`)
-                                    .setLabel('Deny')
+                                    .setLabel('Refusé')
                                     .setStyle(ButtonStyle.Danger)
                             );
 
@@ -169,7 +169,7 @@ module.exports = {
                             });
 
                             await interaction.reply({ 
-                                content: 'Form submitted successfully!', 
+                                content: 'Formulaire soumis avec succès!', 
                                 ephemeral: true 
                             });
                         }
@@ -217,7 +217,7 @@ module.exports = {
                     async (err, submission) => {
                         if (err || !submission) {
                             return interaction.reply({
-                                content: 'Error loading submission.',
+                                content: 'Erreur lors du chargement de la soumission.',
                                 ephemeral: true
                             });
                         }
@@ -230,9 +230,9 @@ module.exports = {
                             [action, reason, interaction.user.id, submissionId],
                             async function(err) {
                                 if (err) {
-                                    console.error('Error updating submission:', err);
+                                    console.error('Erreur lors de la mise à jour de la soumission:', err);
                                     return interaction.reply({
-                                        content: 'Error updating submission.',
+                                        content: 'Erreur lors de la mise à jour de la soumission.',
                                         ephemeral: true
                                     });
                                 }
@@ -261,7 +261,7 @@ module.exports = {
                                             .setTimestamp();
 
                                         publicEmbed
-                                            .setDescription(`Submitted by <@${interaction.user.id}> (${interaction.user.tag})`)
+                                            .setDescription(`Soumis par <@${interaction.user.id}> (${interaction.user.tag})`)
                                             .addFields(
                                                 Object.entries(responses).map(([field, value]) => ({
                                                     name: field,
@@ -311,7 +311,7 @@ module.exports = {
     
                                         await submitter.send({ embeds: [notificationEmbed] });
                                     } catch (error) {
-                                        console.error('Could not notify user:', error);
+                                        console.error('Impossible de notifier l\'utilisateur:', error);
                                     }
                                 }
 
@@ -336,7 +336,7 @@ module.exports = {
                     async (err, existingVote) => {
                         if (err) {
                             return interaction.reply({
-                                content: 'Error checking vote status.',
+                                content: 'Erreur lors de la vérification du statut du vote.',
                                 ephemeral: true
                             });
                         }
@@ -363,7 +363,7 @@ module.exports = {
                                 async (err, result) => {
                                     if (err || !result) {
                                         return interaction.reply({
-                                            content: 'Error fetching vote counts.',
+                                            content: 'Erreur lors de la récupération du nombre de votes.',
                                             ephemeral: true
                                         });
                                     }
@@ -396,7 +396,7 @@ module.exports = {
                 return;
             }
         } catch (error) {
-            console.error('Error in interaction handler:', error);
+            console.error('Erreur dans le gestionnaire d\'interaction:', error);
             try {
                 if (!interaction.replied && !interaction.deferred) {
                     await interaction.reply({
@@ -405,7 +405,7 @@ module.exports = {
                     });
                 }
             } catch (err) {
-                console.error('Error sending error message:', err);
+                console.error('Erreur dans le gestionnaire d\'interaction:', err);
             }
         }
     },
